@@ -49,25 +49,26 @@ struct Oscillator
     float modSocketVolts;
     float noteInHz;
     float audibleThresholdHz;
-    FIXME: instruction 0
-    Oscillator() :  vOctInput(0.5f), defaultVoltage(0.f), waveformControlPosition(4), pulseWidthPercent(50.f), octave(0), modSocketVolts(0.f), noteInHz(440.f), audibleThresholdHz(20000.f) {} 
-
-    ~Oscillator() FIXME: instruction 0
-    {
-        std::cout << "Goodbye from Oscillator Destructor" << std::endl;
-    }
+    
+    Oscillator();
+    ~Oscillator();
 
     float modulateNote(float inputSocketVolts, float modSocketVolts);
     void selectOscWaveform(int waveformControlPosition, int waveformModInputValue);
     void printMe();
     void ascendingNote(float audibleThresholdHz);
-
-    void displayOctave() FIXME: instruction 0
-    {
-        std::cout  << "Current Octave = " << vOctInput + modSocketVolts << std::endl;
-    }
-
+    void displayOctave();
 };
+
+Oscillator::Oscillator() 
+{  
+    vOctInput = 0.5f; defaultVoltage = 0.f; waveformControlPosition = 4; pulseWidthPercent = 50.f; octave = (0); modSocketVolts = 0.f; noteInHz = 440.f; audibleThresholdHz = 20000.f; 
+} 
+
+Oscillator::~Oscillator() 
+    {
+        std::cout << "Goodbye from Oscillator Destructor" << std::endl;
+    }
 
 float Oscillator::modulateNote(float inputVolts, float modVolts)
 {
@@ -117,6 +118,10 @@ void Oscillator::printMe()
     std::cout << std::endl;
 }
 
+void Oscillator::displayOctave()
+{
+    std::cout  << "Current Octave = " << vOctInput + modSocketVolts << std::endl;
+}
 /*
  copied UDT 2:
  */
@@ -129,21 +134,26 @@ struct Sequencer
     float rangeLengthInputVolts;
     bool randomInputIsHigh;
     int maxSemitoneRange;
-    FIXME: instruction 0
-    Sequencer() : clockInputVolts(4), seqLength(4), inputGateIsHigh(true), rangeSemitones(0), rangeLengthInputVolts(12.f), randomInputIsHigh(true), maxSemitoneRange(18) {}
-    //DESTRUCTOR
-    ~Sequencer()FIXME: instruction 0
-    {
-        std::cout << "Goodbye from Sequencer Destructor" << std::endl;
-    }
+    
+    Sequencer();
+    ~Sequencer();
 
     int modulateSeqLength(int seqControlValue, int modLenInputVal);
     int quantizeSequence(int scale, bool quantizeSwitchValue);
     void printMe();
     void displayNoteRange();
     void extendRange(int rangeSemitones);
-
 };
+
+Sequencer::Sequencer()
+{
+    clockInputVolts = 4; seqLength = 4; inputGateIsHigh = true; rangeSemitones = 0; rangeLengthInputVolts =12.f; randomInputIsHigh = true; maxSemitoneRange = 18;
+}
+
+Sequencer::~Sequencer()
+{
+    std::cout << "Goodbye from Sequencer Destructor" << std::endl;
+}
 
 void Sequencer::displayNoteRange()
 {
@@ -192,19 +202,10 @@ struct Arpeggiator
     bool isHigh;
     float clockInputVolts;
     float voltageThreshold;
-
-    int arpLength = 0; //MATKAT EXAMPLE
-    FIXME: this constructor does NOT initialize all of your member variables, and it should. Do not leave your member variables in an un-initialized state.
-    Arpeggiator(int n) : arpLength(n) {} FIXME: instruction 0
-
-    Arpeggiator() : arpInputVolts(0.f), chordType(" Major9 "), arpModeControlValue(2), arpMode(" "),isHigh(true), clockInputVolts(0.f), voltageThreshold(10.f) {}FIXME: instruction 0
-
-    //DESTRUCTOR
-    ~Arpeggiator() FIXME: instruction 0
-    {
-        std::cout << "Goodbye from Arpeggiator Destructor" << std::endl;
-    }
-
+    
+    Arpeggiator();
+    ~Arpeggiator();
+    
     int modulateChordType(int chordControlValue, int chordModulationInputVal);
     int modulateOctave(int octControlValue, int octModulationInputVal);
     void printMe();
@@ -212,6 +213,16 @@ struct Arpeggiator
     void modulateArpMode();
     void displayInputVolts();
 };
+
+Arpeggiator::Arpeggiator()
+{
+    arpInputVolts= 0.f; chordType = " Major9 "; arpModeControlValue =2; arpMode = " "; isHigh = true; clockInputVolts = 0.f; voltageThreshold = 10.f;
+}
+
+Arpeggiator::~Arpeggiator()
+{
+    std::cout << "Goodbye from Arpeggiator Destructor" << std::endl;
+}
 
 void Arpeggiator::modulateArpMode()
 {
@@ -253,22 +264,25 @@ struct MelodyGenerator
     Sequencer sequencer;
     Arpeggiator arpeggiator;
 
-    MelodyGenerator() FIXME: instruction 0
-    {
-        std::cout << "Hello from MelodyGenerator struct, I am being constructed" << std::endl;
-        arpeggiator.arpModeControlValue = 0;
-    }
-
-    ~MelodyGenerator() FIXME: instruction 0
-    {
-        arpeggiator.arpModeControlValue = 0;
-        std::cout << "Arp mode reset to default value of " << arpeggiator.arpModeControlValue << std::endl;
-        std::cout << "Goodbye from MelodyGenerator struct, I am being destructed" << std::endl;
-    }
+    MelodyGenerator();
+    ~MelodyGenerator();
 
     void displayArpStatus();
     void getSeqNoteRange();
 };
+
+MelodyGenerator::MelodyGenerator()
+{
+    std::cout << "Hello from MelodyGenerator struct, I am being constructed" << std::endl;
+    arpeggiator.arpModeControlValue = 0;
+}
+
+MelodyGenerator::~MelodyGenerator()
+{
+    arpeggiator.arpModeControlValue = 0;
+    std::cout << "Arp mode reset to default value of " << arpeggiator.arpModeControlValue << std::endl;
+    std::cout << "Goodbye from MelodyGenerator struct, I am being destructed" << std::endl;
+}
 // add 2 member functions that use member variables
 void MelodyGenerator::displayArpStatus()
 {
@@ -288,20 +302,22 @@ struct SequencePlayer
     Oscillator oscillator;
     Sequencer sequencer;
 
-    SequencePlayer() FIXME: instruction 0
-    {
-        std::cout << "Hello from SequencePlayer struct, I am being constructed " << std::endl;
-    }
-
-    ~SequencePlayer() FIXME: instruction 0
-    {
-        std::cout << "Goodbye from SequencePlayer struct, I am being destructed " << std::endl;
-    }
+    SequencePlayer();
+    ~SequencePlayer();
 
     void displayOctaveAndRange();
     void displayRootNote();
 };
 
+SequencePlayer::SequencePlayer()
+{
+    std::cout << "Hello from SequencePlayer struct, I am being constructed " << std::endl;
+}
+
+SequencePlayer::~SequencePlayer()
+{
+    std::cout << "Goodbye from SequencePlayer struct, I am being destructed " << std::endl;
+}
 //add 2 member functions
 void SequencePlayer::displayOctaveAndRange()
 {
@@ -380,6 +396,3 @@ int main()
 
     std::cout << "good to go!" << std::endl;
 }
-
-
-
