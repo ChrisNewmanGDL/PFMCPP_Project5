@@ -66,9 +66,9 @@ Oscillator::Oscillator()
 } 
 
 Oscillator::~Oscillator() 
-    {
-        std::cout << "Goodbye from Oscillator Destructor" << std::endl;
-    }
+{
+    std::cout << "Goodbye from Oscillator Destructor" << std::endl;
+}
 
 float Oscillator::modulateNote(float inputVolts, float modVolts)
 {
