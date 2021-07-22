@@ -33,32 +33,11 @@ Purpose:  This project continues developing Project3.
 
  */
 
-/*
+/* 
  copied UDT 1:
  */
 
-/*
- copied UDT 2:
- */
-
-/*
- copied UDT 3:
- */
-
-/*
- new UDT 4:
- with 2 member functions
- */
-
-/*
- new UDT 5:
- with 2 member functions
- */
-
-/* copied UDT 1:
- */
-
-# include <iostream>
+#include <iostream>
 
 struct Oscillator
 {
@@ -70,10 +49,10 @@ struct Oscillator
     float modSocketVolts;
     float noteInHz;
     float audibleThresholdHz;
+    FIXME: instruction 0
+    Oscillator() :  vOctInput(0.5f), defaultVoltage(0.f), waveformControlPosition(4), pulseWidthPercent(50.f), octave(0), modSocketVolts(0.f), noteInHz(440.f), audibleThresholdHz(20000.f) {} 
 
-    Oscillator() :  vOctInput(0.5f), defaultVoltage(0.f), waveformControlPosition(4), pulseWidthPercent(50.f), octave(0), modSocketVolts(0.f), noteInHz(440.f), audibleThresholdHz(20000.f) {}
-
-     ~Oscillator()
+    ~Oscillator() FIXME: instruction 0
     {
         std::cout << "Goodbye from Oscillator Destructor" << std::endl;
     }
@@ -83,7 +62,7 @@ struct Oscillator
     void printMe();
     void ascendingNote(float audibleThresholdHz);
 
-    void displayOctave()
+    void displayOctave() FIXME: instruction 0
     {
         std::cout  << "Current Octave = " << vOctInput + modSocketVolts << std::endl;
     }
@@ -150,10 +129,10 @@ struct Sequencer
     float rangeLengthInputVolts;
     bool randomInputIsHigh;
     int maxSemitoneRange;
-
+    FIXME: instruction 0
     Sequencer() : clockInputVolts(4), seqLength(4), inputGateIsHigh(true), rangeSemitones(0), rangeLengthInputVolts(12.f), randomInputIsHigh(true), maxSemitoneRange(18) {}
     //DESTRUCTOR
-    ~Sequencer()
+    ~Sequencer()FIXME: instruction 0
     {
         std::cout << "Goodbye from Sequencer Destructor" << std::endl;
     }
@@ -215,12 +194,13 @@ struct Arpeggiator
     float voltageThreshold;
 
     int arpLength = 0; //MATKAT EXAMPLE
-    Arpeggiator(int n) : arpLength(n) {}
+    FIXME: this constructor does NOT initialize all of your member variables, and it should. Do not leave your member variables in an un-initialized state.
+    Arpeggiator(int n) : arpLength(n) {} FIXME: instruction 0
 
-    Arpeggiator() : arpInputVolts(0.f), chordType(" Major9 "), arpModeControlValue(2), arpMode(" "),isHigh(true), clockInputVolts(0.f), voltageThreshold(10.f) {}
+    Arpeggiator() : arpInputVolts(0.f), chordType(" Major9 "), arpModeControlValue(2), arpMode(" "),isHigh(true), clockInputVolts(0.f), voltageThreshold(10.f) {}FIXME: instruction 0
 
     //DESTRUCTOR
-    ~Arpeggiator()
+    ~Arpeggiator() FIXME: instruction 0
     {
         std::cout << "Goodbye from Arpeggiator Destructor" << std::endl;
     }
@@ -234,9 +214,9 @@ struct Arpeggiator
 };
 
 void Arpeggiator::modulateArpMode()
-    {
-        std::cout << "Arpeggiator mode = " << ((arpModeControlValue = 1) ? "Up " : "Down") << std::endl;
-    }
+{
+    std::cout << "Arpeggiator mode = " << ((arpModeControlValue = 1) ? "Up " : "Down") << std::endl;
+}
 
 int Arpeggiator::modulateChordType(int chordCtrlValue, int chordModInputVal)
 {
@@ -273,13 +253,13 @@ struct MelodyGenerator
     Sequencer sequencer;
     Arpeggiator arpeggiator;
 
-    MelodyGenerator()
+    MelodyGenerator() FIXME: instruction 0
     {
         std::cout << "Hello from MelodyGenerator struct, I am being constructed" << std::endl;
         arpeggiator.arpModeControlValue = 0;
     }
 
-    ~MelodyGenerator()
+    ~MelodyGenerator() FIXME: instruction 0
     {
         arpeggiator.arpModeControlValue = 0;
         std::cout << "Arp mode reset to default value of " << arpeggiator.arpModeControlValue << std::endl;
@@ -308,12 +288,12 @@ struct SequencePlayer
     Oscillator oscillator;
     Sequencer sequencer;
 
-    SequencePlayer()
+    SequencePlayer() FIXME: instruction 0
     {
         std::cout << "Hello from SequencePlayer struct, I am being constructed " << std::endl;
     }
 
-    ~SequencePlayer()
+    ~SequencePlayer() FIXME: instruction 0
     {
         std::cout << "Goodbye from SequencePlayer struct, I am being destructed " << std::endl;
     }
