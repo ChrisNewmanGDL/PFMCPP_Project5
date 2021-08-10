@@ -32,399 +32,15 @@
 
 
 
-
-
-/*
- copied UDT 1:
- */
-
 #include <iostream>
 #include "LeakedObjectDetector.h"
-
-struct Oscillator
-{
-    float vOctInput;
-    float defaultVoltage;
-    int waveformControlPosition;
-    float pulseWidthPercent;
-    float modSocketVolts;
-    float noteInHz;
-    float audibleThresholdHz;
-
-    Oscillator();
-    ~Oscillator();
-
-    float modulateNote(float inputSocketVolts, float modSocketVolts);
-    void selectOscWaveform(int waveformControlPosition, int waveformModInputValue);
-    void printMe();
-    void ascendingNote(float audibleThresholdHz);
-    float getOctave();
-    void displayOctave();
-
-    JUCE_LEAK_DETECTOR(Oscillator)
-};
-
-Oscillator::Oscillator()
-{
-    vOctInput = 1.f; defaultVoltage = 0.f; waveformControlPosition = 4; pulseWidthPercent = 50.f; modSocketVolts = 1.f; noteInHz = 440.f; audibleThresholdHz = 20000.f;
-}
-
-Oscillator::~Oscillator()
-{
-    std::cout << "Goodbye from Oscillator Destructor" << std::endl;
-}
-//.........................................................................................................................................................................................
-
-float Oscillator::getOctave()
-{
-   return vOctInput + modSocketVolts;
-}
-
-void Oscillator::displayOctave()
-{
-    std::cout << "Oscillator's current Octave = " << this->getOctave() << " - Frequency = " << this->noteInHz << std::endl;
-}
-
-float Oscillator::modulateNote(float inputVolts, float modVolts)
-{
-    return inputVolts + modVolts;
-}
-
-
-
-void Oscillator::selectOscWaveform(int waveformCtrlPosition, int waveformModInputVal)
-{
-    int waveform = waveformCtrlPosition + waveformModInputVal;
-
-    switch (waveform)
-    {
-    case 1:
-        std::cout << "Sine";
-        break;
-    case 2:
-        std::cout << "Triangle";
-        break;
-    case 3:
-        std::cout << "Saw";
-        break;
-    case 4:
-        std::cout << "Square";
-        break;
-    }
-}
-
-void Oscillator::ascendingNote(float thresholdHz)
-{
-    while (noteInHz < thresholdHz)
-    {
-        std::cout << noteInHz << "Hz" << " Note is theoretically within human range " << std::endl;
-        noteInHz *= 2;
-    }
-    std::cout << "Out of range, but your dog should hear it" << std::endl;
-}
-
-void Oscillator::printMe()
-{
-    vOctInput = 2.58f;
-    modSocketVolts = 2.167f;
-    float combinedVolts = vOctInput + modSocketVolts;
-    std::cout << "combinedVolts = " << combinedVolts << std::endl;
-    std::cout << ((combinedVolts > 4) ? "Voltage is above max value of 4v" : " - ");
-    std::cout << std::endl;
-}
-
-struct OscillatorWrapper
-{
-    OscillatorWrapper( Oscillator* ptr ) : pointerToOscillator( ptr ) { }
-    ~OscillatorWrapper()
-    {
-        delete pointerToOscillator;
-    }
-
-    Oscillator* pointerToOscillator = nullptr;
-};
-
-/*
- copied UDT 2:
- */
-struct Sequencer
-{
-    int clockInputVolts;
-    int seqLength;
-    bool inputGateIsHigh;
-    int rangeSemitones;
-    float rangeLengthInputVolts;
-    bool randomInputIsHigh;
-    int maxSemitoneRange;
-    int noteLengthMs;
-
-    Sequencer();
-    ~Sequencer();
-
-    int modulateSeqLength(int seqControlValue, int modLenInputVal);
-    int quantizeSequence(int scale, bool quantizeSwitchValue);
-    void printMe();
-    void extendRange(int rangeSemitones);
-    void displayNoteRange();
-    int getSequenceLengthInMs();
-    void displaySequenceLengthInMs();
-
-    JUCE_LEAK_DETECTOR(Sequencer)
-};
-
-Sequencer::Sequencer()
-{
-    clockInputVolts = 4; seqLength = 4; inputGateIsHigh = true; rangeSemitones = 0; rangeLengthInputVolts = 12.f; randomInputIsHigh = true; maxSemitoneRange = 18; noteLengthMs = 500;
-}
-
-Sequencer::~Sequencer()
-{
-    std::cout << "Goodbye from Sequencer Destructor" << std::endl;
-}
-
-int Sequencer::getSequenceLengthInMs()
-{
-    return seqLength * noteLengthMs;
-}
-
-
-void Sequencer::displaySequenceLengthInMs()
-{
-    std::cout << "Sequencer's " << this->seqLength << " note sequence will take " << this->getSequenceLengthInMs() << " ms to play through to end" << std::endl;
-}
-
-int Sequencer::modulateSeqLength(int seqCtrlValue, int modLenInputVal)
-{
-    return seqCtrlValue + modLenInputVal;
-}
-
-void Sequencer::displayNoteRange()
-{
-    float range = rangeSemitones + rangeLengthInputVolts;
-    std::cout << "Note range is " << range << " semitones" << std::endl;
-}
-
-int Sequencer::quantizeSequence(int scale, bool quantizeSwitchValue)
-{
-    return (quantizeSwitchValue ? scale : 0);
-}
-
-void Sequencer::printMe()
-{
-    seqLength = 4;
-    std::cout << "Sequence length = " << seqLength << std::endl;
-}
-
-void Sequencer::extendRange(int sequenceRangeSemitones)
-{
-    std::cout << "Starting semitone range = " << sequenceRangeSemitones << std::endl;
-
-    for (int i = 0; i <= maxSemitoneRange; ++i)
-    {
-        ++sequenceRangeSemitones;
-        std::cout << "Semitone range is now " << sequenceRangeSemitones << std::endl;
-    }
-
-    std::cout << "Semitone range is now " << sequenceRangeSemitones << " - bit much" << std::endl;
-}
-
-struct SequencerWrapper
-{
-    SequencerWrapper( Sequencer* ptr ) : pointerToSequencer( ptr ) { } 
-    ~SequencerWrapper()
-    {
-        delete pointerToSequencer;
-    }
-
-    Sequencer* pointerToSequencer = nullptr; //initialising member variable pointerToSequencer as nullptr
-};
-
-// /*
-//  copied UDT 3:
-//  */
-struct Arpeggiator
-{
-    float arpInputVolts;
-    std::string chordType;
-    int arpModeControlValue;
-    std::string arpMode;
-    bool isHigh;
-    float clockInputVolts;
-    float voltageThreshold;
-
-    Arpeggiator();
-    ~Arpeggiator();
-
-    int modulateChordType(int chordControlValue, int chordModulationInputVal);
-    int modulateOctave(int octControlValue, int octModulationInputVal);
-    void printMe();
-    void showMaxVOctWarning();
-    std::string getArpMode();
-    void displayArpMode();
-
-    JUCE_LEAK_DETECTOR(Arpeggiator)
-};
-
-Arpeggiator::Arpeggiator()
-{
-    arpInputVolts = 0.f; chordType = " Major9 "; arpModeControlValue = 2; arpMode = " "; isHigh = true; clockInputVolts = 0.f; voltageThreshold = 10.f;
-}
-
-Arpeggiator::~Arpeggiator()
-{
-    std::cout << "Goodbye from Arpeggiator Destructor" << std::endl;
-}
-
-std::string Arpeggiator::getArpMode()
-{
-    arpMode =  (arpModeControlValue == 1) ? "Up " : "Down";
-    return arpMode;
-}
-
-void Arpeggiator::displayArpMode()
-{
-    std::cout << "Arpeggiator mode = " << this->getArpMode() << " - Arp mode control value = " << this->arpModeControlValue << std::endl;
-}
-
-int Arpeggiator::modulateChordType(int chordCtrlValue, int chordModInputVal)
-{
-    int chordIdentifier = chordCtrlValue + chordModInputVal;
-    return chordIdentifier;
-}
-
-int Arpeggiator::modulateOctave(int octCtrlValue, int octModInputVal)
-{
-    return octCtrlValue + octModInputVal;
-}
-
-void Arpeggiator::printMe()
-{
-    std::cout << "chord = " << chordType << std::endl;
-}
-
-void Arpeggiator::showMaxVOctWarning()
-{
-    while (arpInputVolts < voltageThreshold)
-    {
-        std::cout << "Arpeggiator input voltage is  within  range " << std::endl;
-        arpInputVolts += 2;
-    }
-    std::cout << "Arpeggiator input voltage out of range" << std::endl;
-}
-
-struct ArpeggiatorWrapper
-{
-    ArpeggiatorWrapper( Arpeggiator* ptr ) : pointerToArpeggiator( ptr ) { } 
-    ~ArpeggiatorWrapper()
-    {
-        delete pointerToArpeggiator;
-    }
-
-    Arpeggiator* pointerToArpeggiator = nullptr; //initialising member variable pointerToArpeggiator as nullptr
-};
-/*
- new UDT 4:
- with 2 member functions
- */
-struct MelodyGenerator
-{
-    // types above used as member variables
-    Sequencer sequencer;
-    Arpeggiator arpeggiator;
-    int  arpModeControlValue = arpeggiator.arpModeControlValue;
-    
-    MelodyGenerator();
-    ~MelodyGenerator();
-
-    void displayArpStatus();
-    void getSeqNoteRange();
-
-    JUCE_LEAK_DETECTOR(MelodyGenerator)
-};
-
-MelodyGenerator::MelodyGenerator()
-{
-    std::cout << "Hello from MelodyGenerator struct, I am being constructed" << std::endl;
-    std::cout << "MG arpmodevalue = " << arpModeControlValue << std::endl;    arpeggiator.arpModeControlValue = 0;
-}
-
-MelodyGenerator::~MelodyGenerator()
-{
-    arpeggiator.arpModeControlValue = 0;
-    std::cout << "Arp mode reset to default value of " << arpeggiator.arpModeControlValue << std::endl;
-    std::cout << "Goodbye from MelodyGenerator struct, I am being destructed" << std::endl;
-}
-// add 2 member functions that use member variables
-void MelodyGenerator::displayArpStatus()
-{
-       std::cout << "Melody generator arp mode = " << arpeggiator.getArpMode() << std::endl;
-}
-
-void MelodyGenerator::getSeqNoteRange()
-{
-    sequencer.displayNoteRange();
-}
-
-struct MelodyGeneratorWrapper
-{
-    MelodyGeneratorWrapper( MelodyGenerator* ptr ) : pointerToMelodyGenerator( ptr ) { } 
-    ~MelodyGeneratorWrapper()
-    {
-        delete pointerToMelodyGenerator;
-    }
-
-    MelodyGenerator* pointerToMelodyGenerator = nullptr; 
-};
-/*
- new UDT 5:
- with 2 member functions
- */
-struct SequencePlayer
-{
-    Oscillator oscillator;
-    Sequencer sequencer;
-
-    SequencePlayer();
-    ~SequencePlayer();
-
-    void displayOctaveAndRange();
-    void displayRootNote();
-
-    JUCE_LEAK_DETECTOR(SequencePlayer)
-};
-
-SequencePlayer::SequencePlayer()
-{
-    std::cout << "Hello from SequencePlayer struct, I am being constructed " << std::endl;
-}
-
-SequencePlayer::~SequencePlayer()
-{
-    std::cout << "Goodbye from SequencePlayer struct, I am being destructed " << std::endl;
-}
-//add 2 member functions
-void SequencePlayer::displayOctaveAndRange()
-{
-    oscillator.displayOctave();
-    sequencer.displayNoteRange();
-}
-
-void SequencePlayer::displayRootNote()
-{
-    std::cout << "Root note of sequence is " << oscillator.noteInHz << "hz" << std::endl;
-}
-
-struct SequencePlayerWrapper
-{
-    SequencePlayerWrapper( SequencePlayer* ptr ) : pointerToSequencePlayer( ptr ) { } 
-    ~SequencePlayerWrapper()
-    {
-        delete pointerToSequencePlayer;
-    }
-
-    SequencePlayer* pointerToSequencePlayer = nullptr; 
-};
-
+#include "Oscillator.h"
+#include "Sequencer.h"
+#include "Arpeggiator.h"
+#include "MelodyGenerator.h"
+#include "SequencePlayer.h"
+#include "Wrappers.h"
+#include "Wrappers.cpp"
 
 /*MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
@@ -439,22 +55,21 @@ send me a DM to review your pull request when the project is ready for review.
 Wait for my code review.
 */
 
-
 int main()
 {
     OscillatorWrapper firstOscillator( new Oscillator() );// unpack  this syntax
     firstOscillator.pointerToOscillator->printMe();
-    OscillatorWrapper basalOscillator( new Oscillator() );
 
+    OscillatorWrapper basalOscillator( new Oscillator() );
     std::cout << "Basal oscillator's current Octave = " << basalOscillator.pointerToOscillator->getOctave() << " - Frequency = " << basalOscillator.pointerToOscillator->noteInHz << std::endl;
     basalOscillator.pointerToOscillator->displayOctave();
     basalOscillator.pointerToOscillator->ascendingNote(20000.f);
 
     SequencerWrapper mySequencer( new Sequencer() );
     mySequencer.pointerToSequencer->printMe(); 
+
     SequencerWrapper seq3Sequencer( new Sequencer() );
     seq3Sequencer.pointerToSequencer->extendRange(16);
-
     std::cout << "seq3's " << seq3Sequencer.pointerToSequencer->seqLength << " note sequence will take " << seq3Sequencer.pointerToSequencer->seqLength * seq3Sequencer.pointerToSequencer->noteLengthMs << " ms to play through to end" << std::endl;
     seq3Sequencer.pointerToSequencer->displaySequenceLengthInMs();
 
@@ -478,7 +93,7 @@ int main()
     }
     
     ArpeggiatorWrapper simpleArpeggiator( new Arpeggiator() );
-    std::cout << "simpleArpeggiator mode = " << myArpeggiator.pointerToArpeggiator->getArpMode() << std::endl;
+    std::cout << "simpleArpeggiator mode = " << myArpeggiator.pointerToArpeggiator->getArpMode() << std::endl; //THIS SHOULD BE SIMPLE ARPEGGIATOR
     myArpeggiator.pointerToArpeggiator->displayArpMode();
 
     MelodyGeneratorWrapper arpeggiator( new MelodyGenerator() );
