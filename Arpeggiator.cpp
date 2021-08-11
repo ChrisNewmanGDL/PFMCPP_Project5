@@ -2,7 +2,7 @@
 #include "Arpeggiator.h"
 Arpeggiator::Arpeggiator()
 {
-    arpInputVolts = 0.f; chordType = " Major9 "; arpModeControlValue = 2; arpMode = " "; isHigh = true; clockInputVolts = 0.f; voltageThreshold = 10.f;
+    
 }
 
 Arpeggiator::~Arpeggiator()

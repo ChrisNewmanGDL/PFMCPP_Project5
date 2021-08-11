@@ -16,7 +16,7 @@ MelodyGenerator::~MelodyGenerator()
 // add 2 member functions that use member variables
 void MelodyGenerator::displayArpStatus()
 {
-       std::cout << "Melody generator arp mode = " << arpeggiator.getArpMode() << std::endl;
+    std::cout << "Melody generator arp mode = " << arpeggiator.getArpMode() << std::endl;
 }
 
 void MelodyGenerator::getSeqNoteRange()

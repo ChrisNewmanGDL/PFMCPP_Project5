@@ -1,17 +1,16 @@
 #pragma once
-#include <iostream>
 #include "LeakedObjectDetector.h"
 
 struct Sequencer
 {
-    int clockInputVolts;
-    int seqLength;
-    bool inputGateIsHigh;
-    int rangeSemitones;
-    float rangeLengthInputVolts;
-    bool randomInputIsHigh;
-    int maxSemitoneRange;
-    int noteLengthMs;
+    int clockInputVolts {4};
+    int seqLength { 4 };
+    bool inputGateIsHigh { true };
+    int rangeSemitones { 0 };
+    float rangeLengthInputVolts { 12.f };
+    bool randomInputIsHigh { true };
+    int maxSemitoneRange { 18 };
+    int noteLengthMs { 500 };
 
     Sequencer();
     ~Sequencer();

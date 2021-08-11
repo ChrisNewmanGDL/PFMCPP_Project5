@@ -1,16 +1,15 @@
 #pragma once
-#include <iostream>
 #include "LeakedObjectDetector.h"
 
 struct Arpeggiator
 {
-    float arpInputVolts;
-    std::string chordType;
-    int arpModeControlValue;
-    std::string arpMode;
-    bool isHigh;
-    float clockInputVolts;
-    float voltageThreshold;
+    float arpInputVolts  { 0.f };
+    std::string chordType  { " Major9 " };
+    int arpModeControlValue  { 2 };
+    std::string arpMode  { " " };
+    bool isHigh  { true };
+    float clockInputVolts  { 0.f };
+    float voltageThreshold  { 10.f };
 
     Arpeggiator();
     ~Arpeggiator();

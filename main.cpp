@@ -40,7 +40,7 @@
 #include "MelodyGenerator.h"
 #include "SequencePlayer.h"
 #include "Wrappers.h"
-#include "Wrappers.cpp"
+
 
 /*MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 

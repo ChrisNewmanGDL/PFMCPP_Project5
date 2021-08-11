@@ -2,7 +2,7 @@
 
 Oscillator::Oscillator()
 {
-    vOctInput = 1.f; defaultVoltage = 0.f; waveformControlPosition = 4; pulseWidthPercent = 50.f; modSocketVolts = 1.f; noteInHz = 440.f; audibleThresholdHz = 20000.f;
+    
 }
 
 Oscillator::~Oscillator()

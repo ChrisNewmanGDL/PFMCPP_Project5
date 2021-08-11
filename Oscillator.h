@@ -1,17 +1,15 @@
 #pragma once
-#include <iostream>
 #include "LeakedObjectDetector.h"
-
 
 struct Oscillator
 {
-    float vOctInput;
-    float defaultVoltage;
-    int waveformControlPosition;
-    float pulseWidthPercent;
-    float modSocketVolts;
-    float noteInHz;
-    float audibleThresholdHz;
+    float vOctInput { 1.f };
+    float defaultVoltage { 0.f };
+    int waveformControlPosition { 4 };
+    float pulseWidthPercent { 50.f };
+    float modSocketVolts { 1.f };
+    float noteInHz { 440.f };
+    float audibleThresholdHz { 20000.f };
 
     Oscillator();
     ~Oscillator();

@@ -16,8 +16,6 @@ OscillatorWrapper::~OscillatorWrapper()
     delete pointerToOscillator;
 }
     
-
-
 SequencerWrapper::SequencerWrapper( Sequencer* ptr) :
     pointerToSequencer( ptr )
 {

@@ -2,7 +2,7 @@
 
 Sequencer::Sequencer()
 {
-    clockInputVolts = 4; seqLength = 4; inputGateIsHigh = true; rangeSemitones = 0; rangeLengthInputVolts = 12.f; randomInputIsHigh = true; maxSemitoneRange = 18; noteLengthMs = 500;
+    //clockInputVolts = 4; seqLength = 4; inputGateIsHigh = true; rangeSemitones = 0; rangeLengthInputVolts = 12.f; //randomInputIsHigh = true; maxSemitoneRange = 18; noteLengthMs = 500;
 }
 
 Sequencer::~Sequencer()
