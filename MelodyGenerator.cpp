@@ -4,7 +4,8 @@
 MelodyGenerator::MelodyGenerator()
 {
     std::cout << "Hello from MelodyGenerator struct, I am being constructed" << std::endl;
-    std::cout << "MG arpmodevalue = " << arpModeControlValue << std::endl;    arpeggiator.arpModeControlValue = 0;
+    std::cout << "MG arpmodevalue = " << arpModeControlValue << std::endl;    
+    arpeggiator.arpModeControlValue = 0;
 }
 
 MelodyGenerator::~MelodyGenerator()

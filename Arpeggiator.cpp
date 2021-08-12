@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Arpeggiator.h"
 Arpeggiator::Arpeggiator()
 {
@@ -23,8 +22,7 @@ void Arpeggiator::displayArpMode()
 
 int Arpeggiator::modulateChordType(int chordCtrlValue, int chordModInputVal)
 {
-    int chordIdentifier = chordCtrlValue + chordModInputVal;
-    return chordIdentifier;
+    return chordCtrlValue + chordModInputVal;
 }
 
 int Arpeggiator::modulateOctave(int octCtrlValue, int octModInputVal)
