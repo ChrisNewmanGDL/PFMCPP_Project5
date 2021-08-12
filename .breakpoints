@@ -1,53 +1,149 @@
 {
   "files": {
+    "MelodyGenerator.cpp": [
+      {
+        "id": "8afbc160-4963-4f0c-8f8a-8228f832f115",
+        "line": 2,
+        "version": 94,
+        "index": 11
+      }
+    ],
+    "MelodyGenerator.h": [
+      {
+        "id": "8f4d7ffe-20d6-49ca-9b26-ec18548f7473",
+        "line": 2,
+        "version": 88,
+        "index": 46
+      },
+      {
+        "id": "de9ed711-750d-45ff-8e0c-23c994479792",
+        "line": 9,
+        "version": 88,
+        "index": 162
+      }
+    ],
+    "Oscillator.cpp": [
+      {
+        "id": "9ccf51ea-c95e-414f-b656-f8b9c840a5d8",
+        "line": 1,
+        "version": 65,
+        "index": 21
+      }
+    ],
+    "Oscillator.h": [
+      {
+        "id": "780f9226-7e2e-42f3-b5a2-4881865b370e",
+        "line": 3,
+        "version": 104,
+        "index": 47
+      }
+    ],
+    "SequencePlayer.h": [
+      {
+        "id": "067d9eeb-154f-44bc-8e98-ed82c3918760",
+        "line": 2,
+        "version": 104,
+        "index": 13
+      },
+      {
+        "id": "d4efe07a-d3e0-4705-b533-0c7402a6b343",
+        "line": 9,
+        "version": 104,
+        "index": 169
+      }
+    ],
+    "Sequencer.cpp": [
+      {
+        "id": "5f827df3-ecf7-4b3e-8860-25c6e7377bbf",
+        "line": 2,
+        "version": 89,
+        "index": 23
+      }
+    ],
+    "Sequencer.h": [
+      {
+        "id": "1fcc8c2b-0100-414d-9da6-f12e93e545dd",
+        "line": 24,
+        "version": 149,
+        "index": 656
+      }
+    ],
+    "Wrappers.cpp": [
+      {
+        "id": "d96e7ea4-0135-4803-a124-d85faef72e76",
+        "line": 2,
+        "version": 510,
+        "index": 22
+      }
+    ],
+    "Wrappers.h": [
+      {
+        "id": "6c461bac-99af-4f84-8e64-3c00c50f80c6",
+        "line": 24,
+        "version": 308,
+        "index": 414
+      }
+    ],
     "main.cpp": [
       {
         "id": "6e3b6390-b2f7-461e-bce0-594e1236ec96",
-        "line": 47,
-        "version": 3253,
-        "index": 1387
+        "line": 33,
+        "version": 3533,
+        "index": 1314
       },
       {
         "id": "15891cc4-098f-48d1-b96f-0b37d1ff64b2",
-        "line": 128,
-        "version": 3253,
-        "index": 3267
+        "line": 35,
+        "version": 3533,
+        "index": 1316
       },
       {
         "id": "f9f8eb9b-9819-4ad9-a121-bdc50997e43d",
-        "line": 138,
-        "version": 3254,
-        "index": 3567
+        "line": 35,
+        "version": 3533,
+        "index": 1316
       },
       {
         "id": "657ba95a-b366-40aa-b122-025379666573",
-        "line": 214,
-        "version": 3257,
-        "index": 5616
+        "line": 35,
+        "version": 3533,
+        "index": 1316
       },
       {
         "id": "f3c0f057-9d5e-42e3-9664-d9ab0b6cf1db",
-        "line": 244,
-        "version": 3255,
-        "index": 6622
+        "line": 35,
+        "version": 3533,
+        "index": 1316
       },
       {
         "id": "541eafe6-9030-4124-893e-34e177c155c6",
-        "line": 284,
-        "version": 3119,
-        "index": 7229
+        "line": 39,
+        "version": 3533,
+        "index": 1426
       },
       {
         "id": "50aa647c-f825-4882-91b5-7d78729eeb65",
-        "line": 296,
-        "version": 3119,
-        "index": 7535
+        "line": 39,
+        "version": 3533,
+        "index": 1426
       },
       {
         "id": "4b53feec-8110-4b3d-b5df-3aca269c28c2",
-        "line": 456,
-        "version": 3267,
-        "index": 11633
+        "line": 42,
+        "version": 3533,
+        "index": 1513
+      },
+      {
+        "id": "254a5f11-4403-487b-9be2-b081e8bd3e74",
+        "line": 55,
+        "version": 3533,
+        "index": 1954
+      },
+      {
+        "id": "a12e9b82-d481-4f98-8596-a831c938a153",
+        "line": 73,
+        "version": 3533,
+        "index": 2708
       }
     ]
   }
